@@ -1,0 +1,59 @@
+[passwords/credential%3A%3Ajason%3A]
+owner = admin
+version = 6.5.0
+modtime = 1475881745.480815000
+
+[passwords/credential%3A%3AJason%3A]
+owner = splunk-system-user
+version = 6.5.0
+modtime = 1475793598.792012000
+
+[passwords/credential%3A%3Acongo%3A]
+owner = splunk-system-user
+version = 6.5.0
+modtime = 1475795788.677580000
+
+[passwords/credential%3A%3Ajconger%3A]
+owner = splunk-system-user
+version = 6.5.0
+modtime = 1475796308.747811000
+
+[passwords/credential%3A%3Atest%3A]
+owner = splunk-system-user
+version = 6.5.0
+modtime = 1475797321.492523000
+
+[passwords/credential%3A%3Ablah1%3A]
+owner = splunk-system-user
+version = 6.5.0
+modtime = 1475797635.989630000
+
+[passwords/credential%3A%3Ablah%3A]
+owner = splunk-system-user
+version = 6.5.0
+modtime = 1475798780.339809000
+
+[passwords/credential%3A%3Ajasonc%3A]
+owner = splunk-system-user
+version = 6.5.0
+modtime = 1475798844.635190000
+
+[passwords/credential%3A%3Aconger%3A]
+owner = splunk-system-user
+version = 6.5.0
+modtime = 1475799375.030523000
+
+[inputs/splunk_modinput_cred_example%3A%2F%2FTesting123]
+owner = admin
+version = 6.5.0
+modtime = 1475880218.524055000
+
+[passwords/credential%3A%3Amrman%3A]
+owner = admin
+version = 6.5.0
+modtime = 1475881458.366653000
+
+[passwords/credential%3A%3Abob%3A]
+owner = admin
+version = 6.5.0
+modtime = 1475881873.029809000
