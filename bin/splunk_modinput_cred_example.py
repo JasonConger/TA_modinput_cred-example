@@ -52,8 +52,7 @@ class MyScript(Script):
 			raise Exception, "Something did not go right: %s" % str(e)
 
 	def encrypt_password(self, username, password, session_key):
-		#args = {'app':self.APP,'token':session_key}
-		args = {'app':self.APP,'token':session_key,'username':'admin','password':'admin'}
+		args = {'token':session_key}
 		service = client.connect(**args)
 		
 		try:
@@ -67,30 +66,26 @@ class MyScript(Script):
 			service.storage_passwords.create(password, username)
 
 		except Exception as e:
-			raise Exception, "An error occured updating credentials. Please ensure your user account has admin_all_objects and/or list_storage_passwords capabilities. Details: %s" % str(e)
+			raise Exception, "An error occurred updating credentials. Please ensure your user account has admin_all_objects and/or list_storage_passwords capabilities. Details: %s" % str(e)
 
 	def mask_password(self, session_key, username):
 		try:
-			#args = {'app':self.APP,'token':session_key}
-			args = {'app':self.APP,'token':session_key,'username':'admin','password':'admin'}
+			args = {'token':session_key}
 			service = client.connect(**args)
 			kind, input_name = self.input_name.split("://")
 			item = service.inputs.__getitem__((input_name, kind))
-			clear_password = item.content["password"]
 			
 			kwargs = {
 				"username": username,
 				"password": self.MASK
 			}
 			item.update(**kwargs).refresh()
-			self.encrypt_password(username, clear_password, session_key)
 			
 		except Exception as e:
 			raise Exception("Error updating inputs.conf: %s" % str(e))
 
 	def get_password(self, session_key, username):
-		#args = {'app':self.APP,'token':session_key}
-		args = {'app':self.APP,'token':session_key,'username':'admin','password':'admin'}
+		args = {'token':session_key}
 		service = client.connect(**args)
 
 		# Retrieve the password from the storage/passwords endpoint	
@@ -108,6 +103,7 @@ class MyScript(Script):
 		try:
 			# If the password is not masked, mask it.
 			if password != self.MASK:
+				self.encrypt_password(username, password, session_key)
 				self.mask_password(session_key, username)
 
 			self.CLEAR_PASSWORD = self.get_password(session_key, username)
